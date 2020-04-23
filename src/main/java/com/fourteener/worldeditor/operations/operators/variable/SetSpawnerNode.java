@@ -17,13 +17,11 @@ public class SetSpawnerNode extends Node {
 	
 	public boolean performNode () {
 		SpawnerVar var = Operator.spawnerVars.get(name);
-		GlobalVars.currentUndo.storeBlock(Operator.currentBlock);
 		String command = "setblock " + Operator.currentBlock.getX();
 		command += " " + Operator.currentBlock.getY();
 		command += " " + Operator.currentBlock.getZ();
-		command += " minecraft:spawner";
+		command += " minecraft:spawner 0 replace ";
 		command += var.getNBT();
-		command += " replace";
 		Main.logDebug("Command: " + command);
 		Operator.currentPlayer.performCommand(command);
 		return true;

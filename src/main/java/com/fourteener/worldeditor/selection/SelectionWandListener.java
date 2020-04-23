@@ -41,7 +41,7 @@ public class SelectionWandListener implements Listener {
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		try {
 			if (itemMeta.getDisplayName().equals(SelectionWand.wandName)
-					&& itemStack.getType().equals(Material.WOODEN_AXE)
+					&& itemStack.getType().equals(Material.WOOD_AXE)
 					&& itemMeta.getEnchants().containsKey(Enchantment.MENDING)) {
 				isValidPlayer = true;
 			}

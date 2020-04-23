@@ -10,9 +10,10 @@ public class GetBlockDataNode extends Node {
 	}
 	
 	public boolean performNode () {
-		String s = Operator.currentBlock.getBlockData().getAsString(true);
+		@SuppressWarnings("deprecation")
+		byte s = Operator.currentBlock.getData();
 		Operator.currentPlayer.sendMessage("§dBlock Data: " + s);
-		return s.contains("[");
+		return s > 0;
 	}
 	
 	public int getArgCount () {

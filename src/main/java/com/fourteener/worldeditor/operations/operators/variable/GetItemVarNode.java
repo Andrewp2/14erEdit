@@ -17,10 +17,10 @@ public class GetItemVarNode extends Node {
 	
 	public boolean performNode () {
 		ItemVar iv = Operator.itemVars.get(name);
-		String command = "give @s ";
-		command += iv.getType().toLowerCase();
-		command += iv.getNBT() + " ";
-		command += iv.getCount();
+		String command = "give @p ";
+		command += iv.getType().toLowerCase() + " ";
+		command += iv.getCount() + " 0 ";
+		command += iv.getNBT();
 		Main.logDebug("Command: " + command);
 		Operator.currentPlayer.performCommand(command);
 		return true;

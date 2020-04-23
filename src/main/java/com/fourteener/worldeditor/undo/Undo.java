@@ -77,6 +77,7 @@ public class Undo {
 	}
 	
 	// Undo a number of changes
+	@SuppressWarnings("deprecation")
 	public int undoChanges (int number) {
 		number = number < 1 ? 1 : number > undoSizes.size() ? undoSizes.size() : number;
 		int numPlaced = 0;
@@ -90,7 +91,7 @@ public class Undo {
 				Block b = bs.getBlock();
 				redoList.addFirst(b.getState());
 				b.setType(bs.getType(), true);
-				b.setBlockData(bs.getBlockData(), true);
+				b.setData(bs.getRawData(), true);
 			}
 		}
 		redoSizes.addFirst(numPlaced);
@@ -104,6 +105,7 @@ public class Undo {
 	}
 	
 	// Redo a number of changes
+	@SuppressWarnings("deprecation")
 	public int redoChanges (int number) {
 		number = number < 1 ? 1 : number > redoSizes.size() ? redoSizes.size() : number;
 		int numPlaced = 0;
@@ -117,7 +119,7 @@ public class Undo {
 				undoList.addLast(bs);
 				Block b = bs.getBlock();
 				b.setType(bs.getType(), true);
-				b.setBlockData(bs.getBlockData(), true);
+				b.setData(bs.getRawData(), true);
 			}
 		}
 		undoSizes.addFirst(numPlaced);

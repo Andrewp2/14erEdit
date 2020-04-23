@@ -32,7 +32,7 @@ public class SelectionWand {
 	
 	// This actually defines the wand and gives it to the player
 	private void givePlayerWand () {
-		ItemStack item = new ItemStack(Material.WOODEN_AXE); // Checked by the wand listener
+		ItemStack item = new ItemStack(Material.WOOD_AXE); // Checked by the wand listener
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(wandName); // Checked by the wand listener
 		item.setItemMeta(meta);

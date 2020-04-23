@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -37,6 +36,7 @@ public class VinesMacro extends Macro {
 	}
 	
 	// Run this macro
+	@SuppressWarnings("deprecation")
 	public boolean performMacro (String[] args, Location loc) {
 		SetupMacro(args, loc);
 		
@@ -83,6 +83,7 @@ public class VinesMacro extends Macro {
 			}
 			
 			String blockStateTop = "[";
+			@SuppressWarnings("unused")
 			String blockState = "";
 			if (block.equalsIgnoreCase("vine")) {
 				boolean firstState = true;
@@ -161,16 +162,12 @@ public class VinesMacro extends Macro {
 			// Grow the top vine
 			BlockState state = b.getState();
 			state.setType(Material.matchMaterial(block));
-			if (block.equalsIgnoreCase("vine"))
-				state.setBlockData(Bukkit.getServer().createBlockData("minecraft:vine" + blockState));
 			operatedBlocks.add(state);
 			// Grow all the other vines
 			for (int i = 1; i <= vineLength; i++) {
 				state = b.getRelative(BlockFace.DOWN, i).getState();
 				if (state.getType() == Material.AIR) {
 					state.setType(Material.matchMaterial(block));
-					if (block.equalsIgnoreCase("vine"))
-						state.setBlockData(Bukkit.getServer().createBlockData("minecraft:vine" + blockState));
 					operatedBlocks.add(state);
 				}
 				else {
@@ -184,7 +181,7 @@ public class VinesMacro extends Macro {
 		for (BlockState bs : operatedBlocks) {
 			Block b = GlobalVars.world.getBlockAt(bs.getLocation());
 			SetBlock.setMaterial(b, bs.getType());
-			b.setBlockData(bs.getBlockData());
+			b.setData(bs.getRawData());
 		}
 		
 		return true;

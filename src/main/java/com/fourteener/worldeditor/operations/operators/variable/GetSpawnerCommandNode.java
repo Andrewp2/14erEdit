@@ -27,9 +27,8 @@ public class GetSpawnerCommandNode extends Node {
 		String command = "setblock " + Operator.currentBlock.getX();
 		command += " " + Operator.currentBlock.getY();
 		command += " " + Operator.currentBlock.getZ();
-		command += " minecraft:spawner";
+		command += " minecraft:spawner 0 replace ";
 		command += var.getNBT();
-		command += " replace";
 		Main.logDebug("Command: " + command);
 		try {
 			File f = new File(path.replace('/', File.separatorChar));

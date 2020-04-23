@@ -14,16 +14,17 @@ public class SetPlusNode extends Node {
 		return node;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public boolean performNode () {
 		boolean didSet = true;
 		if (Operator.currentBlock.getType() == arg.getBlock()) {
 			didSet = false;
 		}
-		if (Operator.currentBlock.getBlockData() == arg.getData()) {
+		if (Operator.currentBlock.getData() == arg.getData()) {
 			didSet = false;
 		}
 		SetBlock.setMaterial(Operator.currentBlock, arg.getBlock());
-		Operator.currentBlock.setBlockData(arg.getData());
+		Operator.currentBlock.setData(arg.getData());
 		return didSet;
 	}
 	

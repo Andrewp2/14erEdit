@@ -8,7 +8,6 @@ import java.util.Queue;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -144,6 +143,7 @@ public class AsyncManager {
 	}
 
 	// Scheduled task to operate
+	@SuppressWarnings("deprecation")
 	public void performOperation () {
 		// If there isn't anything to do, return
 		if (operations.size() == 0)
@@ -248,7 +248,7 @@ public class AsyncManager {
 					int xB = Math.abs(b.getX() - op.clipboard.xNeg);
 					int yB = Math.abs(b.getY() - op.clipboard.yNeg);
 					int zB = Math.abs(b.getZ() - op.clipboard.zNeg);
-					op.clipboard.blockData.set(xB + (zB * op.clipboard.width) + (yB * op.clipboard.length * op.clipboard.width), b.getBlockData().getAsString());
+					op.clipboard.blockData.set(xB + (zB * op.clipboard.width) + (yB * op.clipboard.length * op.clipboard.width), Byte.toString(b.getData()));
 					op.clipboard.nbtData.set(xB + (zB * op.clipboard.width) + (yB * op.clipboard.length * op.clipboard.width), nbtExtractor.getNBT(b.getState()));
 					doneOperations++;
 					if (op.toOperate.size() == 0) {
@@ -265,14 +265,14 @@ public class AsyncManager {
 						GlobalVars.currentUndo = op.undo;
 						op.undoRunning = true;
 					}
-					Material blockMat = Material.matchMaterial(op.clipboard.blockData.get(op.clipboard.loadPos).split("\\[")[0]);
-					BlockData blockDat = Bukkit.getServer().createBlockData(op.clipboard.blockData.get(op.clipboard.loadPos));
+					Material blockMat = Material.matchMaterial(op.clipboard.blockData.get(op.clipboard.loadPos).split(":")[0]);
+					byte blockDat = Byte.parseByte(op.clipboard.blockData.get(op.clipboard.loadPos).split(":")[1]);
 					String nbt = op.clipboard.nbtData.get(op.clipboard.loadPos);
 					// Set the block
 					if (blockMat == Material.AIR) {
 						if (op.clipboard.setAir) {
 							SetBlock.setMaterial(b, blockMat);
-							b.setBlockData(blockDat);
+							b.setData(blockDat);
 							if (!nbt.equalsIgnoreCase("")) {
 								String command = "data merge block " + b.getX() + " " + b.getY() + " " + b.getZ() + " " + nbt;
 								Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
@@ -281,7 +281,7 @@ public class AsyncManager {
 					}
 					else {
 						SetBlock.setMaterial(b, blockMat);
-						b.setBlockData(blockDat);
+						b.setData(blockDat);
 						if (!nbt.equalsIgnoreCase("")) {
 							String command = "data merge block " + b.getX() + " " + b.getY() + " " + b.getZ() + " " + nbt;
 							Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);

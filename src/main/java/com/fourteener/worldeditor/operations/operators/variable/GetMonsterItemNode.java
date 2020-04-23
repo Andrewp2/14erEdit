@@ -17,8 +17,7 @@ public class GetMonsterItemNode extends Node {
 	
 	public boolean performNode () {
 		MonsterVar var = Operator.monsterVars.get(name);
-		String command = "give @s minecraft:" + var.getType();
-		command += "_spawn_egg{EntityTag:";
+		String command = "give @p minecraft:spawn_egg 1 0 {EntityTag:";
 		command += var.asNBT();
 		command += "}";
 		Main.logDebug("Command: " + command);

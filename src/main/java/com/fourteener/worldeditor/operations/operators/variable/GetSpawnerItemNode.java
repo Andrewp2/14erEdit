@@ -17,7 +17,7 @@ public class GetSpawnerItemNode extends Node {
 	
 	public boolean performNode () {
 		SpawnerVar var = Operator.spawnerVars.get(name);
-		String command = "give @s minecraft:spawner{BlockEntityTag:";
+		String command = "give @p minecraft:mob_spawner 1 0 {BlockEntityTag:";
 		command += var.getNBT();
 		command += "}";
 		Main.logDebug("Command: " + command);

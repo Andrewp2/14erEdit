@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -33,6 +32,7 @@ public class GrassMacro extends Macro {
 	}
 	
 	// Run this macro
+	@SuppressWarnings("deprecation")
 	public boolean performMacro (String[] args, Location loc) {
 		SetupMacro(args, loc);
 		
@@ -121,9 +121,9 @@ public class GrassMacro extends Macro {
 			// Place the block
 			BlockState operated = b.getState();
 			if (blockToPlace.contains("[")) {
-				String[] split = blockToPlace.split("\\[");
+				String[] split = blockToPlace.split(":");
 				operated.setType(Material.matchMaterial(split[0]));
-				operated.setBlockData(Bukkit.getServer().createBlockData(blockToPlace));
+				operated.setRawData(Byte.parseByte(split[1]));
 			}
 			else {
 				operated.setType(Material.matchMaterial(blockToPlace));
@@ -136,7 +136,7 @@ public class GrassMacro extends Macro {
 		for (BlockState bs : operatedBlocks) {
 			Block b = GlobalVars.world.getBlockAt(bs.getLocation());
 			SetBlock.setMaterial(b, bs.getType());
-			b.setBlockData(bs.getBlockData());
+			b.setData(bs.getRawData());
 		}
 		
 		return true;

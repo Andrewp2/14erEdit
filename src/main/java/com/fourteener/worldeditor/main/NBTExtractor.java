@@ -2,9 +2,9 @@ package com.fourteener.worldeditor.main;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
-import org.bukkit.craftbukkit.v1_15_R1.block.CraftBlockEntityState;
+import org.bukkit.craftbukkit.v1_12_R1.block.CraftBlockEntityState;
 
-import net.minecraft.server.v1_15_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
 
 public class NBTExtractor {
 	public String getNBT(BlockState bs) {
@@ -12,7 +12,7 @@ public class NBTExtractor {
 			@SuppressWarnings("rawtypes")
 			CraftBlockEntityState cb = (CraftBlockEntityState) bs;
 			NBTTagCompound ntc = cb.getSnapshotNBT();
-			String nbt = ntc.asString();
+			String nbt = ntc.toString();
 			nbt = nbt.replaceAll(",?[xz]:[\\d-]+", "");
 			nbt = nbt.replaceAll(",y:[\\d-]+", "");
 			nbt = nbt.replaceAll(",?id:\"[A-Za-z:]+\"", "");

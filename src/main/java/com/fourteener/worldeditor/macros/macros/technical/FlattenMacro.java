@@ -30,6 +30,7 @@ public class FlattenMacro extends Macro {
 	}
 	
 	// Run this macro
+	@SuppressWarnings("deprecation")
 	public boolean performMacro (String[] args, Location loc) {
 		SetupMacro(args, loc);
 		
@@ -54,7 +55,7 @@ public class FlattenMacro extends Macro {
 		for (BlockState bs : operatedBlocks) {
 			Block b = GlobalVars.world.getBlockAt(bs.getLocation());
 			SetBlock.setMaterial(b, bs.getType());
-			b.setBlockData(bs.getBlockData());
+			b.setData(bs.getRawData());
 		}
 		
 		return true;

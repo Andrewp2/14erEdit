@@ -1,8 +1,6 @@
 package com.fourteener.worldeditor.operations.operators.world;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.data.BlockData;
 
 import com.fourteener.worldeditor.main.*;
 import com.fourteener.worldeditor.operations.Operator;
@@ -12,7 +10,7 @@ public class BlockNode extends Node {
 	
 	// Stores this node's argument
 	public Material arg1;
-	public BlockData arg2 = null;
+	public byte arg2 = -1;
 	
 	// Creates a new node
 	public BlockNode newNode() {
@@ -25,8 +23,8 @@ public class BlockNode extends Node {
 	public BlockNode newNode(boolean overload) {
 		BlockNode node = new BlockNode();
 		String data = GlobalVars.operationParser.parseStringNode().contents;
-		node.arg1 = Material.matchMaterial(data.split("\\[")[0]);
-		node.arg2 = Bukkit.getServer().createBlockData(data);
+		node.arg1 = Material.matchMaterial(data.split(":")[0]);
+		node.arg2 = Byte.parseByte(data.split(":")[1]);
 		return node;
 	}
 	
@@ -36,17 +34,18 @@ public class BlockNode extends Node {
 	}
 	
 	// Get the data of this block
-	public BlockData getData () {
+	public byte getData () {
 		return arg2;
 	}
 	
 	// Check if it's the correct block
+	@SuppressWarnings("deprecation")
 	public boolean performNode () {
-		if (arg2 == null) {
+		if (arg2 == -1) {
 			return Operator.currentBlock.getType().equals(arg1);
 		}
 		else {
-			return Operator.currentBlock.getBlockData().matches(arg2) && Operator.currentBlock.getType().equals(arg1);
+			return Operator.currentBlock.getData() == arg2 && Operator.currentBlock.getType().equals(arg1);
 		}
 	}
 	

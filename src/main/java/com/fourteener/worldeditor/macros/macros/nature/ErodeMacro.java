@@ -146,12 +146,13 @@ public class ErodeMacro extends Macro {
 		return snapshotArray;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void applyToWorld(List<BlockState> snapshotArray) {
 		for (BlockState b : snapshotArray) {
 			Location l = b.getLocation();
 			Block block = GlobalVars.world.getBlockAt(l);
 			SetBlock.setMaterial(block, b.getType());
-			block.setBlockData(b.getBlockData());
+			block.setData(b.getRawData());
 		}
 	}
 

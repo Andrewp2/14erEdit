@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.BlockData;
 
 import com.fourteener.schematics.Schematic;
 import com.fourteener.worldeditor.macros.macros.Macro;
@@ -62,6 +61,7 @@ public class SchematicMacro extends Macro {
 	}
 	
 	// Run this macro
+	@SuppressWarnings("deprecation")
 	public boolean performMacro (String[] args, Location loc) {
 		SetupMacro(args, loc);
 		
@@ -77,20 +77,9 @@ public class SchematicMacro extends Macro {
 				rz = 0;
 			}
 			rx++;
-			
-			Material blockMat = Material.matchMaterial(blockData.get(i).split("\\[")[0]);
-			BlockData blockDat;
-			if (blockData.get(i).equalsIgnoreCase("minecraft:")) {
-				blockDat = null;
-			}
-			else {
-				try {
-					blockDat = Bukkit.getServer().createBlockData(blockData.get(i));
-				}
-				catch (Exception e) {
-					blockDat = null;
-				}
-			}
+
+			Material blockMat = Material.matchMaterial(blockData.get(i).split(":")[0]);
+			byte blockDat = Byte.parseByte(blockData.get(i).split(":")[1]);
 			String nbt = blockNbt.get(i);
 			
 			Block b = GlobalVars.world.getBlockAt(x + rx - xOff - 1, y + ry - yOff, z + rz - zOff);
@@ -98,8 +87,8 @@ public class SchematicMacro extends Macro {
 			if (blockMat == Material.AIR) {
 				if (setAir) {
 					SetBlock.setMaterial(b, blockMat);
-					if (blockDat != null)
-						b.setBlockData(blockDat);
+					if (blockDat != -1)
+						b.setData(blockDat);
 					if (!nbt.equalsIgnoreCase("")) {
 						String command = "data merge block " + b.getX() + " " + b.getY() + " " + b.getZ() + " " + nbt;
 						Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
@@ -108,8 +97,8 @@ public class SchematicMacro extends Macro {
 			}
 			else {
 				SetBlock.setMaterial(b, blockMat);
-				if (blockDat != null)
-					b.setBlockData(blockDat);
+				if (blockDat != -1)
+					b.setData(blockDat);
 				if (!nbt.equalsIgnoreCase("")) {
 					String command = "data merge block " + b.getX() + " " + b.getY() + " " + b.getZ() + " " + nbt;
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);

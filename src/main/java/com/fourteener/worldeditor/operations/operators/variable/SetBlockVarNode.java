@@ -18,11 +18,12 @@ public class SetBlockVarNode extends Node {
 		return node;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public boolean performNode () {
 		BlockVar bv = Operator.blockVars.get(name);
 		Operator.currentBlock.setType(Material.matchMaterial(bv.getType()));
-		if (!bv.getData().isEmpty()) {
-			Operator.currentBlock.setBlockData(Bukkit.getServer().createBlockData(bv.getData()));
+		if (!(bv.getData() == 0 || bv.getData() == -1)) {
+			Operator.currentBlock.setData(bv.getData());
 		}
 		if (!bv.getNBT().isEmpty()) {
 			String command = "data merge block ";
