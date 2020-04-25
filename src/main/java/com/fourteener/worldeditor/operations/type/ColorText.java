@@ -28,7 +28,7 @@ public class ColorText implements Serializable {
 	
 	// Get as a Minecraft-formatted NBT text element
 	public String asNBT() {
-		String s = "'{";
+		String s = "{";
 		s += "\"text\":\"" + text.replace('_', ' ') + "\",";
 		s += "\"color\":\"" + color + "\",";
 		s += "\"bold\":\"" + bold + "\",";
@@ -36,7 +36,7 @@ public class ColorText implements Serializable {
 		s += "\"underlined\":\"" + underlined + "\",";
 		s += "\"strikethrough\":\"" + strikethrough + "\",";
 		s += "\"obfuscated\":\"" + obfuscated + "\"";
-		s += "}'";
+		s += "}";
 		return s;
 	}
 	
