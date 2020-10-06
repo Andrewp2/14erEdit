@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "fourteeneredit",
+  "version": "${version}",
+  "name": "14erEdit",
+  "description": "A modern world editor for Minecraft",
+  "authors": [
+    "14ercooper"
+  ],
+  "contributors": [],
+  "contact": {
+    "homepage": "https://14erc.com/edit",
+    "sources": "https://github.com/14ercooper/14erEdit"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/fourteeneredit/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com._14ercooper.worldeditor.main.Main"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "fourteeneredit.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.10.1",
+    "fabric": "*"
+  }
+}
