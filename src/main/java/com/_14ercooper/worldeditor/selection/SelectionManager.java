@@ -3,8 +3,6 @@ package com._14ercooper.worldeditor.selection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.main.*;
 

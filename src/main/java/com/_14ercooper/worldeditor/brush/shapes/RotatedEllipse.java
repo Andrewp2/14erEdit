@@ -12,7 +12,7 @@ public class RotatedEllipse extends BrushShape {
 
     String hFD, strL, dX, dY, dZ = "";
     int gotArgs = 0;
-    
+
     @Override
     public BlockIterator GetBlocks(double x, double y, double z) {
 	Random rand = new Random();

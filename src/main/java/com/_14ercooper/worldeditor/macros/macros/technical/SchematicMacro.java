@@ -1,7 +1,5 @@
 package com._14ercooper.worldeditor.macros.macros.technical;
 
-import org.bukkit.Location;
-
 import com._14ercooper.worldeditor.macros.macros.Macro;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.selection.SchematicHandler;

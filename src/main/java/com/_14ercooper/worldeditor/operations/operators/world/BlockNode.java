@@ -4,9 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.main.NBTExtractor;

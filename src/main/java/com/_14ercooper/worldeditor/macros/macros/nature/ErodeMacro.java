@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-
 import com._14ercooper.worldeditor.macros.macros.Macro;
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;

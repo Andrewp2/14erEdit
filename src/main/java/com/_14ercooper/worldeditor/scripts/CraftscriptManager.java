@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.undo.UndoManager;
 

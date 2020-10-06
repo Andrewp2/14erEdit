@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.main;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.data.type.Leaves;
-
 import com._14ercooper.worldeditor.operations.Operator;
 
 public class SetBlock {

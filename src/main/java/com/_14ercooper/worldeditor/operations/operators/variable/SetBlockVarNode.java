@@ -1,8 +1,5 @@
 package com._14ercooper.worldeditor.operations.operators.variable;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.operations.operators.Node;

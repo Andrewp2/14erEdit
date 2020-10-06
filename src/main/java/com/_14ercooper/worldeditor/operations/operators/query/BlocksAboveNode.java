@@ -1,7 +1,5 @@
 package com._14ercooper.worldeditor.operations.operators.query;
 
-import org.bukkit.block.Block;
-
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.operations.operators.Node;

@@ -3,11 +3,6 @@ package com._14ercooper.worldeditor.commands;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.make.Make;
 
@@ -21,7 +16,7 @@ public class CommandMake implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	if (!(arg0 instanceof Player)) {
 	    Main.logError("This must be run as a player.", arg0);
 	    return false;

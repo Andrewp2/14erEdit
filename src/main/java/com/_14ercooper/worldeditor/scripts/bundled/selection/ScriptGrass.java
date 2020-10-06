@@ -1,7 +1,5 @@
 package com._14ercooper.worldeditor.scripts.bundled.selection;
 
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.scripts.Craftscript;

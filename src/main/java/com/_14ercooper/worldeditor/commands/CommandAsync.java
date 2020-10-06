@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 
@@ -17,7 +12,7 @@ public class CommandAsync implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	try {
 	    if (args[0].equalsIgnoreCase("drop")) {
 		GlobalVars.asyncManager.dropAsync();

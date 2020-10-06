@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.scripts.bundled.selection;
 
 import java.util.LinkedList;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.scripts.Craftscript;

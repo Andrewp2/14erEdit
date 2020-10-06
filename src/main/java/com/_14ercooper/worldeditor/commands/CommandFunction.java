@@ -3,11 +3,6 @@ package com._14ercooper.worldeditor.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.functions.Function;
 import com._14ercooper.worldeditor.main.Main;
 
@@ -21,7 +16,7 @@ public class CommandFunction implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	if (!(arg0 instanceof Player)) {
 	    Main.logError("This command must be run as a player.", arg0);
 	    return false;

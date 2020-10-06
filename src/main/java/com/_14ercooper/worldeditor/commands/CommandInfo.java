@@ -1,11 +1,5 @@
 package com._14ercooper.worldeditor.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 
 public class CommandInfo implements CommandExecutor {
@@ -17,7 +11,7 @@ public class CommandInfo implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	try {
 	    Bukkit.broadcastMessage("§d14erEdit is running properly");
 

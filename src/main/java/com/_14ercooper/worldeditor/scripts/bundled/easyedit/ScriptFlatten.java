@@ -2,10 +2,6 @@ package com._14ercooper.worldeditor.scripts.bundled.easyedit;
 
 import java.util.LinkedList;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.scripts.Craftscript;

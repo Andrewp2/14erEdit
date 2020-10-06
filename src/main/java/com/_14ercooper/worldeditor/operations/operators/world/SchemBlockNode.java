@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.operations.operators.world;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-
 import com._14ercooper.worldeditor.blockiterator.iterators.SchemBrushIterator;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
@@ -28,7 +23,7 @@ public class SchemBlockNode extends BlockNode {
 	}
 	return node;
     }
-    
+
     // This should never be run
     @Override
     public BlockNode newNode(String text) {
@@ -63,9 +58,9 @@ public class SchemBlockNode extends BlockNode {
 	    boolean retVal = false;
 	    try {
 		Operator.currentBlock = Operator.currentPlayer.getWorld().getBlockAt(14, 0, 14);
-	    	Operator.currentBlock.setType(Material.matchMaterial(SchemBrushIterator.blockType));
-	    	Operator.currentBlock.setBlockData(Bukkit.getServer().createBlockData(SchemBrushIterator.blockData));
-	    	retVal = arg.performNode();
+		Operator.currentBlock.setType(Material.matchMaterial(SchemBrushIterator.blockType));
+		Operator.currentBlock.setBlockData(Bukkit.getServer().createBlockData(SchemBrushIterator.blockData));
+		retVal = arg.performNode();
 	    }
 	    catch (Exception e) {
 		Main.logError("Could not perform schem block node", Operator.currentPlayer);

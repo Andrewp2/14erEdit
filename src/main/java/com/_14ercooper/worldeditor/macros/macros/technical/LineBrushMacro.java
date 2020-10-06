@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.macros.macros.technical;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.macros.macros.Macro;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.main.SetBlock;

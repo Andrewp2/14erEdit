@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.main;
 
 import java.util.Set;
 
-import org.bukkit.Material;
-import org.bukkit.plugin.Plugin;
-
 import com._14ercooper.worldeditor.async.AsyncManager;
 import com._14ercooper.worldeditor.blockiterator.IteratorManager;
 import com._14ercooper.worldeditor.macros.MacroLauncher;
@@ -17,7 +14,6 @@ public class GlobalVars {
     // Global variables
     public static int noiseSeed;
     public static SimplexNoise simplexNoise;
-    public static Plugin plugin;
 
     // Used to track undos
     public static Undo currentUndo = null;

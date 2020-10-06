@@ -1,11 +1,5 @@
 package com._14ercooper.worldeditor.selection;
 
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
 public class SelectionWand {
     public Player owner; // Store the owner so people can have different selections
     public SelectionManager manager; // Same reason as above

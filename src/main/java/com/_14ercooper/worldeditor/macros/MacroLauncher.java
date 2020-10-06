@@ -3,8 +3,6 @@ package com._14ercooper.worldeditor.macros;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Location;
-
 import com._14ercooper.worldeditor.macros.macros.Macro;
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;

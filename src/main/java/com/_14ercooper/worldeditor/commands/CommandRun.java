@@ -1,11 +1,5 @@
 package com._14ercooper.worldeditor.commands;
 
-import org.bukkit.block.Block;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
 
@@ -19,7 +13,7 @@ public class CommandRun implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	try {
 	    if (sender instanceof Player) {
 		String opStr = "";

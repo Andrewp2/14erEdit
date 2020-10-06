@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.functions.commands.world;
 
 import java.util.List;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-
 import com._14ercooper.worldeditor.functions.Function;
 import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
 import com._14ercooper.worldeditor.main.Main;

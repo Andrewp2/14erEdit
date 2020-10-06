@@ -7,9 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.brush.shapes.Multi;
 import com._14ercooper.worldeditor.main.*;
@@ -88,7 +85,8 @@ public class Brush {
 	    Main.logDebug("Brush type: " + shapeGenerator.getClass().getSimpleName());
 	    try {
 		do {
-		    if (brushOpOffset >= brushOperation.length || brushOperation[brushOpOffset].equalsIgnoreCase("end")) {
+		    if (brushOpOffset >= brushOperation.length
+			    || brushOperation[brushOpOffset].equalsIgnoreCase("end")) {
 			brushOpOffset += 2;
 			break;
 		    }
@@ -148,7 +146,7 @@ public class Brush {
     public boolean operate(double x, double y, double z) {
 	try {
 	    currentPlayer = owner;
-	    
+
 	    if (!(shapeGenerator instanceof Multi)) {
 		// Build an array of all blocks to operate on
 		BlockIterator blockArray = shapeGenerator.GetBlocks(x, y, z);

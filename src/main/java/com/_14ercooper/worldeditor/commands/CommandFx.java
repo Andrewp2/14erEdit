@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.brush.Brush;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.selection.SchematicHandler;
@@ -25,7 +20,7 @@ public class CommandFx implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	try {
 	    if (args.length < argOffset + 1) {
 		Main.logError("fx requires at least one argument.", sender);

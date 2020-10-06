@@ -2,8 +2,6 @@ package com._14ercooper.worldeditor.functions.commands.logic;
 
 import java.util.List;
 
-import org.bukkit.Material;
-
 import com._14ercooper.worldeditor.functions.Function;
 import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
 

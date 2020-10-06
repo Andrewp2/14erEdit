@@ -3,9 +3,6 @@ package com._14ercooper.worldeditor.async;
 import java.util.ArrayDeque;
 import java.util.List;
 
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.schematics.SchemLite;
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.blockiterator.iterators.MultiIterator;

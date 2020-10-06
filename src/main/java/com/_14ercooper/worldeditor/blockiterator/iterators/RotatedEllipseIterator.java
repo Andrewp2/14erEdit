@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.blockiterator.iterators;
 
 import java.util.List;
 
-import org.bukkit.Bukkit;
-import org.bukkit.block.Block;
-
 import com._14ercooper.math.Point3;
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.main.Main;
@@ -19,7 +16,7 @@ public class RotatedEllipseIterator extends BlockIterator {
     double hFD, strL, dX, dY, dZ;
     int radMax;
     int maxDist;
-    
+
     @Override
     public RotatedEllipseIterator newIterator(List<String> args) {
 	try {
@@ -50,9 +47,9 @@ public class RotatedEllipseIterator extends BlockIterator {
 	    return null;
 	}
     }
-    
+
     Point3 focus1, focus2, negCenter;
-    
+
     private void setup() {
 	Point3 dir = new Point3(dX, dY, dZ);
 	Point3 center = new Point3(xC, yC, zC);
@@ -85,7 +82,7 @@ public class RotatedEllipseIterator extends BlockIterator {
 	    Point3 blockPoint = new Point3(x, y, z);
 	    blockPoint = blockPoint.add(negCenter);
 	    double dist = blockPoint.distance(focus1) + blockPoint.distance(focus2);
-	    
+
 	    // Make sure it's small enough
 	    if (dist > strL)
 		continue;

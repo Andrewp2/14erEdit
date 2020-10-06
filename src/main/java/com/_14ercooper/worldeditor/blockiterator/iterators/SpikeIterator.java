@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.blockiterator.iterators;
 
 import java.util.List;
 
-import org.bukkit.Bukkit;
-import org.bukkit.block.Block;
-
 import com._14ercooper.math.Line;
 import com._14ercooper.math.Point3;
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
@@ -47,16 +44,15 @@ public class SpikeIterator extends BlockIterator {
 	    return iterator;
 	}
 	catch (Exception e) {
-	    Main.logError("Error creating spike iterator. Please check your brush parameters.",
-		    Operator.currentPlayer);
+	    Main.logError("Error creating spike iterator. Please check your brush parameters.", Operator.currentPlayer);
 	    e.printStackTrace();
 	    return null;
 	}
     }
-    
+
     Point3 basePos;
     Line spikeLine;
-    
+
     private void setup() {
 	basePos = new Point3(xC, yC, zC);
 	Point3 secondPoint = new Point3(dX, dY, dZ);
@@ -89,11 +85,11 @@ public class SpikeIterator extends BlockIterator {
 	    double radMi = rMin - ((rMin * h0) / (h + 0.0001));
 	    double radMa = bSize - ((bSize * h0) / (h + 0.0001));
 	    Main.logDebug("dists " + distToLine + " " + h0 + " " + radMi + " " + radMa);
-	    
+
 	    // Check they are in compliance
 	    if (distToLine > radMa || (distToLine < radMi && radMi > 0.05))
 		continue;
-	    
+
 	    break;
 	}
 

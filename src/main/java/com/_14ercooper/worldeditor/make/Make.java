@@ -3,8 +3,6 @@ package com._14ercooper.worldeditor.make;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.Main;
 
 public class Make {
@@ -17,8 +15,9 @@ public class Make {
 	    return false;
 	}
 	try {
-	    boolean returnVal = generators.get(type).make(player, tags, player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ());
-	    
+	    boolean returnVal = generators.get(type).make(player, tags, player.getLocation().getX(),
+		    player.getLocation().getY(), player.getLocation().getZ());
+
 	    return returnVal;
 	}
 	catch (Exception e) {

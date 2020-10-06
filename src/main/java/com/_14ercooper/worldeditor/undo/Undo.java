@@ -3,10 +3,6 @@ package com._14ercooper.worldeditor.undo;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;

@@ -2,9 +2,6 @@ package com._14ercooper.worldeditor.blockiterator.iterators;
 
 import java.util.List;
 
-import org.bukkit.Bukkit;
-import org.bukkit.block.Block;
-
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
@@ -20,7 +17,7 @@ public class NewCylinderIterator extends BlockIterator {
     double radCorr;
     int height;
     int dirMax;
-    
+
     @Override
     public NewCylinderIterator newIterator(List<String> args) {
 	try {

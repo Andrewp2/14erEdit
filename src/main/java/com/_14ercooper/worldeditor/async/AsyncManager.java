@@ -6,13 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitScheduler;
-
 import com._14ercooper.schematics.SchemLite;
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.blockiterator.iterators.SchemBrushIterator;
@@ -285,9 +278,9 @@ public class AsyncManager {
 			}
 			if (b == null && currentAsyncOp.iterators.size() > 1) {
 			    currentAsyncOp.iterators.remove(0);
-				if (currentAsyncOp.iterators.get(0) instanceof SchemBrushIterator) {
-				    ((SchemBrushIterator) currentAsyncOp.iterators.get(0)).cleanup();
-				}
+			    if (currentAsyncOp.iterators.get(0) instanceof SchemBrushIterator) {
+				((SchemBrushIterator) currentAsyncOp.iterators.get(0)).cleanup();
+			    }
 			    currentAsyncOp.operations.remove(0);
 			    if (currentAsyncOp.iterators.size() == 0 || currentAsyncOp.operations.size() == 0) {
 				doContinue = true;

@@ -3,8 +3,6 @@ package com._14ercooper.worldeditor.undo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.entity.Player;
-
 public class UndoManager {
     private static List<Undo> undoList = new ArrayList<Undo>();
 

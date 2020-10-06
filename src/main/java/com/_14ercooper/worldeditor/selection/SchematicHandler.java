@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import org.bukkit.entity.Player;
-
 import com._14ercooper.schematics.SchemLite;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;

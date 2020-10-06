@@ -1,10 +1,5 @@
 package com._14ercooper.worldeditor.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.undo.UndoManager;
 
 // These are dedicated versions of the undo and redo commands
@@ -17,7 +12,7 @@ public class CommandUndo implements CommandExecutor {
 		return false;
 	    }
 	}
-	
+
 	if (sender instanceof Player) {
 	    if (command.getName().equalsIgnoreCase("un")) {
 		int numToUndo = 1;

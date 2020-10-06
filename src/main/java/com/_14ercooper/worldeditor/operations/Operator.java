@@ -3,10 +3,6 @@ package com._14ercooper.worldeditor.operations;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Bukkit;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.operators.core.EntryNode;
 import com._14ercooper.worldeditor.operations.type.*;
@@ -18,7 +14,7 @@ public class Operator {
     private static Player firstPlayer = null;
     public static boolean ignoringPhysics = false; // False to ignore physics, true to perform physics 'cause Minecraft
     public static boolean inSetNode = false;
-						   // is screwy
+    // is screwy
     public static Map<String, BlockVar> blockVars = new HashMap<String, BlockVar>();
     public static Map<String, ItemVar> itemVars = new HashMap<String, ItemVar>();
     public static Map<String, NumericVar> numericVars = new HashMap<String, NumericVar>();
