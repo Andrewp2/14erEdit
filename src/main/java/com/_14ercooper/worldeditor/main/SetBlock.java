@@ -1,6 +1,9 @@
 package com._14ercooper.worldeditor.main;
 
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.Block;
+import com._14ercooper.worldeditor.wrapper.BlockState;
+import com._14ercooper.worldeditor.wrapper.Material;
 
 public class SetBlock {
     public static void setMaterial(Block b, Material mat) {
@@ -8,10 +11,8 @@ public class SetBlock {
 	    if (GlobalVars.currentUndo != null)
 		GlobalVars.currentUndo.storeBlock(b);
 	    b.setType(mat, false);
-	    if (mat.toString().toLowerCase().contains("leaves")) {
-		Leaves leafData = (Leaves) b.getBlockData();
-		leafData.setPersistent(true);
-		b.setBlockData(leafData);
+	    if (b.dataContains("persistent")) {
+		b.setData("persistent", "true");
 	    }
 	}
 	catch (Exception e) {
@@ -26,10 +27,8 @@ public class SetBlock {
 	    if (GlobalVars.currentUndo != null)
 		GlobalVars.currentUndo.storeBlock(b);
 	    b.setType(mat, physics);
-	    if (mat.toString().toLowerCase().contains("leaves")) {
-		Leaves leafData = (Leaves) b.getBlockData();
-		leafData.setPersistent(true);
-		b.setBlockData(leafData);
+	    if (b.dataContains("persistent")) {
+		b.setData("persistent", "true");
 	    }
 	}
 	catch (Exception e) {
@@ -44,10 +43,8 @@ public class SetBlock {
 	    if (GlobalVars.currentUndo != null)
 		GlobalVars.currentUndo.storeBlock(b.getBlock());
 	    b.setType(mat);
-	    if (mat.toString().toLowerCase().contains("leaves")) {
-		Leaves leafData = (Leaves) b.getBlockData();
-		leafData.setPersistent(true);
-		b.setBlockData(leafData);
+	    if (b.dataContains("persistent")) {
+		b.setData("persistent", "true");
 	    }
 	}
 	catch (Exception e) {

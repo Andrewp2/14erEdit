@@ -6,6 +6,8 @@ import java.util.HashSet;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.Block;
+import com._14ercooper.worldeditor.wrapper.BlockState;
 
 public class Undo {
     // Whose undo is this?

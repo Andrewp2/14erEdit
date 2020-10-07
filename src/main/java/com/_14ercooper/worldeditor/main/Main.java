@@ -21,9 +21,13 @@ import com._14ercooper.worldeditor.operations.Parser;
 import com._14ercooper.worldeditor.scripts.CraftscriptLoader;
 import com._14ercooper.worldeditor.scripts.CraftscriptManager;
 import com._14ercooper.worldeditor.selection.SelectionWandListener;
+import com._14ercooper.worldeditor.wrapper.BroadcastTarget;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
+import com._14ercooper.worldeditor.wrapper.CallbackManager;
 import com._14ercooper.worldeditor.wrapper.CommandManager;
 import com._14ercooper.worldeditor.wrapper.Initializer;
 import com._14ercooper.worldeditor.wrapper.Material;
+import com._14ercooper.worldeditor.wrapper.World;
 
 public class Main extends Initializer {
 
@@ -69,17 +73,16 @@ public class Main extends Initializer {
 	GlobalVars.brushMask.add(Material.matchMaterial("minecraft:void_air"));
 
 	// Register listeners for brushes and wands
-	getServer().getPluginManager().registerEvents(new SelectionWandListener(), this);
-	getServer().getPluginManager().registerEvents(new BrushListener(), this);
+	CallbackManager.registerNowCallback(new SelectionWandListener());
+	CallbackManager.registerNowCallback(new BrushListener());
 
 	// These are needed by the plugin, but should only be loaded once as they are
 	// very slow to load
-	GlobalVars.noiseSeed = (int) Bukkit.getWorlds().get(0).getSeed(); // Seeded using the world seed
+	GlobalVars.noiseSeed = (int) World.getSeed(); // Seeded using the world seed
 									  // for variance between worlds
 									  // but consistency in the same
 									  // world
-	GlobalVars.simplexNoise = new SimplexNoise(Bukkit.getWorlds().get(0).getSeed());
-	GlobalVars.plugin = this;
+	GlobalVars.simplexNoise = new SimplexNoise(World.getSeed());
 
 	// Load managers
 	GlobalVars.scriptManager = new CraftscriptManager();
@@ -100,7 +103,7 @@ public class Main extends Initializer {
 
     public static void logDebug(String message) {
 	if (GlobalVars.isDebug)
-	    Bukkit.getServer().broadcastMessage("§c[DEBUG] " + message); // ----
+	    Broadcaster.broadcastAll("§c[DEBUG] " + message); // ----
 	try {
 	    if (GlobalVars.logDebugs) {
 		if (!Files.exists(Paths.get(GlobalVars.rootDir + "/debug.log")))
@@ -113,11 +116,11 @@ public class Main extends Initializer {
 	}
     }
 
-    public static void logError(String message, CommandSender p) {
+    public static void logError(String message, BroadcastTarget p) {
 	GlobalVars.errorLogged = true;
 	if (p == null)
-	    p = Bukkit.getConsoleSender();
-	p.sendMessage("§6[ERROR] " + message);
+	    p = Broadcaster.getConsole();
+	Broadcaster.broadcastSingle("§6[ERROR] " + message, p);
 	if (GlobalVars.logErrors) {
 	    try {
 		String errMessage = "";
