@@ -8,6 +8,7 @@ import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.wrapper.Block;
 import com._14ercooper.worldeditor.wrapper.BlockState;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class Undo {
     // Whose undo is this?
@@ -90,7 +91,7 @@ public class Undo {
 		    Block b = bs.getBlock();
 		    redoList.addFirst(b.getState());
 		    b.setType(bs.getType(), false);
-		    b.setBlockData(bs.getBlockData(), false);
+		    b.setData(bs.getData(), false);
 		}
 	    }
 	    redoSizes.addFirst(numPlaced);
@@ -123,7 +124,7 @@ public class Undo {
 		    undoList.addLast(bs);
 		    Block b = bs.getBlock();
 		    b.setType(bs.getType(), false);
-		    b.setBlockData(bs.getBlockData(), false);
+		    b.setData(bs.getData(), false);
 		}
 	    }
 	    undoSizes.addFirst(numPlaced);

@@ -18,6 +18,14 @@ public class Block {
 	// TODO
     }
     
+    public void setData(String s) {
+	// TODO
+    }
+    
+    public void setData(String s, boolean doPhysics) {
+	// TODO
+    }
+    
     public BlockState getState() {
 	// TODO
 	return null;
@@ -30,5 +38,20 @@ public class Block {
 
     public void setNBT(String nbt) {
 	// TODO Auto-generated method stub
+    }
+    
+    public int getX() {
+	// TODO
+	return 0;
+    }
+    
+    public int getY() {
+	// TODO
+	return 0;
+    }
+    
+    public int getZ() {
+	// TODO
+	return 0;
     }
 }

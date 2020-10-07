@@ -23,4 +23,29 @@ public class BlockState {
 	// TODO
 	return null;
     }
+
+    public Material getType() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+    
+    public String getData() {
+	// TODO
+	return null;
+    }
+    
+    public int getX() {
+	// TODO
+	return 0;
+    }
+    
+    public int getY() {
+	// TODO
+	return 0;
+    }
+    
+    public int getZ() {
+	// TODO
+	return 0;
+    }
 }

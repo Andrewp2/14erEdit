@@ -8,4 +8,8 @@ public class Player implements BroadcastTarget {
 
     }
 
+    public String getName() {
+	// TODO
+	return "";
+    }
 }
