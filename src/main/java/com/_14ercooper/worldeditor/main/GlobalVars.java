@@ -8,13 +8,15 @@ import com._14ercooper.worldeditor.macros.MacroLauncher;
 import com._14ercooper.worldeditor.operations.Parser;
 import com._14ercooper.worldeditor.scripts.CraftscriptManager;
 import com._14ercooper.worldeditor.undo.Undo;
+import com._14ercooper.worldeditor.wrapper.Material;
 
 public class GlobalVars {
 
     // Global variables
     public static int noiseSeed;
     public static SimplexNoise simplexNoise;
-
+    public static String rootDir = "14erEdit";
+    
     // Used to track undos
     public static Undo currentUndo = null;
 

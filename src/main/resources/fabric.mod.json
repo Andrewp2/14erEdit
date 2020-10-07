@@ -17,7 +17,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com._14ercooper.worldeditor.main.Main"
+      "com._14ercooper.worldeditor.wrapper.Initializer"
     ],
     "client": [],
     "server": []

@@ -21,49 +21,52 @@ import com._14ercooper.worldeditor.operations.Parser;
 import com._14ercooper.worldeditor.scripts.CraftscriptLoader;
 import com._14ercooper.worldeditor.scripts.CraftscriptManager;
 import com._14ercooper.worldeditor.selection.SelectionWandListener;
+import com._14ercooper.worldeditor.wrapper.CommandManager;
+import com._14ercooper.worldeditor.wrapper.Initializer;
+import com._14ercooper.worldeditor.wrapper.Material;
 
-public class Main extends JavaPlugin {
+public class Main extends Initializer {
 
     @Override
     public void onEnable() {
 	// Create folders as needed
 	try {
-	    Files.createDirectories(Paths.get("plugins/14erEdit/schematics"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/ops"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/Commands"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/vars"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/templates"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/multibrushes"));
-	    Files.createDirectories(Paths.get("plugins/14erEdit/functions"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/schematics"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/ops"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/Commands"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/vars"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/templates"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/multibrushes"));
+	    Files.createDirectories(Paths.get(GlobalVars.rootDir + "/functions"));
 	}
 	catch (IOException e) {
 	    Main.logDebug("Error creating directory structure. 14erEdit may not work properly until this is resolved.");
 	}
 
 	// Register commands with the server
-	this.getCommand("fx").setExecutor(new CommandFx());
+	CommandManager.addCommand("fx", new CommandFx());
 	CommandUndo undoCmd = new CommandUndo();
-	this.getCommand("un").setExecutor(undoCmd);
-	this.getCommand("re").setExecutor(undoCmd);
+	CommandManager.addCommand("un", undoCmd);
+	CommandManager.addCommand("re", undoCmd);
 	CommandConfirm confirmCmd = new CommandConfirm();
-	this.getCommand("confirm").setExecutor(confirmCmd);
-	this.getCommand("cancel").setExecutor(confirmCmd);
-	this.getCommand("script").setExecutor(new CommandScript());
-	this.getCommand("run").setExecutor(new CommandRun());
-	this.getCommand("runat").setExecutor(new CommandRunat());
-	this.getCommand("debug").setExecutor(new CommandDebug());
-	this.getCommand("14erEdit").setExecutor(new CommandInfo());
-	this.getCommand("async").setExecutor(new CommandAsync());
-	this.getCommand("brmask").setExecutor(new CommandBrmask());
-	this.getCommand("template").setExecutor(new CommandTemplate());
-	this.getCommand("funct").setExecutor(new CommandFunction());
-	this.getCommand("make").setExecutor(new CommandMake());
+	CommandManager.addCommand("confirm", confirmCmd);
+	CommandManager.addCommand("cancel", confirmCmd);
+	CommandManager.addCommand("script", new CommandScript());
+	CommandManager.addCommand("run", new CommandRun());
+	CommandManager.addCommand("runat", new CommandRunat());
+	CommandManager.addCommand("debug", new CommandDebug());
+	CommandManager.addCommand("14erEdit", new CommandInfo());
+	CommandManager.addCommand("async", new CommandAsync());
+	CommandManager.addCommand("brmask", new CommandBrmask());
+	CommandManager.addCommand("template", new CommandTemplate());
+	CommandManager.addCommand("funct", new CommandFunction());
+	CommandManager.addCommand("make", new CommandMake());
 
 	// Set up brush mask
 	GlobalVars.brushMask = new HashSet<Material>();
-	GlobalVars.brushMask.add(Material.AIR);
-	GlobalVars.brushMask.add(Material.CAVE_AIR);
-	GlobalVars.brushMask.add(Material.VOID_AIR);
+	GlobalVars.brushMask.add(Material.matchMaterial("minecraft:air"));
+	GlobalVars.brushMask.add(Material.matchMaterial("minecraft:cave_air"));
+	GlobalVars.brushMask.add(Material.matchMaterial("minecraft:void_air"));
 
 	// Register listeners for brushes and wands
 	getServer().getPluginManager().registerEvents(new SelectionWandListener(), this);
@@ -77,9 +80,6 @@ public class Main extends JavaPlugin {
 									  // world
 	GlobalVars.simplexNoise = new SimplexNoise(Bukkit.getWorlds().get(0).getSeed());
 	GlobalVars.plugin = this;
-
-	// Load config
-	loadConfig();
 
 	// Load managers
 	GlobalVars.scriptManager = new CraftscriptManager();
@@ -98,19 +98,14 @@ public class Main extends JavaPlugin {
 	MakeSetup.registerMakes();
     }
 
-    @Override
-    public void onDisable() {
-	// We don't need to do anything on disable
-    }
-
     public static void logDebug(String message) {
 	if (GlobalVars.isDebug)
 	    Bukkit.getServer().broadcastMessage("§c[DEBUG] " + message); // ----
 	try {
 	    if (GlobalVars.logDebugs) {
-		if (!Files.exists(Paths.get("plugins/14erEdit/debug.log")))
-		    Files.createFile(Paths.get("plugins/14erEdit/debug.log"));
-		Files.writeString(Paths.get("plugins/14erEdit/debug.log"), message + "\n", StandardOpenOption.APPEND);
+		if (!Files.exists(Paths.get(GlobalVars.rootDir + "/debug.log")))
+		    Files.createFile(Paths.get(GlobalVars.rootDir + "/debug.log"));
+		Files.writeString(Paths.get(GlobalVars.rootDir + "/debug.log"), message + "\n", StandardOpenOption.APPEND);
 	    }
 	}
 	catch (Exception e) {
@@ -128,51 +123,13 @@ public class Main extends JavaPlugin {
 		String errMessage = "";
 		errMessage += message + "\n";
 
-		if (!Files.exists(Paths.get("plugins/14erEdit/error.log")))
-		    Files.createFile(Paths.get("plugins/14erEdit/error.log"));
-		Files.writeString(Paths.get("plugins/14erEdit/error.log"), errMessage, StandardOpenOption.APPEND);
+		if (!Files.exists(Paths.get(GlobalVars.rootDir + "/error.log")))
+		    Files.createFile(Paths.get(GlobalVars.rootDir + "/error.log"));
+		Files.writeString(Paths.get(GlobalVars.rootDir + "/error.log"), errMessage, StandardOpenOption.APPEND);
 	    }
 	    catch (Exception e2) {
 		// Also not super important
 	    }
 	}
     }
-
-    private static void loadConfig() {
-	GlobalVars.plugin.saveDefaultConfig();
-
-	if (!GlobalVars.plugin.getConfig().isSet("maxLoopLength")) {
-	    System.out.println("Updating configuration file.");
-	    try {
-		Files.writeString(Paths.get("/plugins/14erEdit/config.yml"), configUpdate1, StandardOpenOption.APPEND);
-	    }
-	    catch (IOException e) {
-		System.out.println(
-			"Error updating configuration. Please manually delete the existing configuration (14erEdit/config.yml).\n"
-				+ "The server will now shut down.");
-		try {
-		    Thread.sleep(15000);
-		    Bukkit.shutdown();
-		}
-		catch (InterruptedException e1) {
-		    // Do nothing
-		}
-	    }
-	}
-
-	GlobalVars.undoLimit = GlobalVars.plugin.getConfig().getLong("undoLimit");
-	GlobalVars.blocksPerAsync = GlobalVars.plugin.getConfig().getLong("blocksPerAsync");
-	GlobalVars.ticksPerAsync = GlobalVars.plugin.getConfig().getLong("ticksPerAsync");
-	GlobalVars.maxLoopLength = GlobalVars.plugin.getConfig().getLong("maxLoopLength");
-	GlobalVars.maxFunctionIters = GlobalVars.plugin.getConfig().getLong("maxFunctionIters");
-	GlobalVars.logDebugs = GlobalVars.plugin.getConfig().getBoolean("logDebugs");
-	GlobalVars.logErrors = GlobalVars.plugin.getConfig().getBoolean("logErrors");
-	GlobalVars.autoConfirm = GlobalVars.plugin.getConfig().getBoolean("defaultAutoConfirm");
-	GlobalVars.isDebug = GlobalVars.plugin.getConfig().getBoolean("defaultDebug");
-    }
-
-    private static String configUpdate1 = "\n# Max execution lengths\n" + "maxLoopLength: 5000\n"
-	    + "maxFunctionIters: 100000\n" + "\n" + "# Should debugs/errors be logged to a file?\n"
-	    + "logDebugs: false\n" + "logErrors: true\n" + "\n" + "# Should debug/autoconfirm be on by default?\n"
-	    + "defaultAutoConfirm: false\n" + "defaultDebug: false\n";
 }
