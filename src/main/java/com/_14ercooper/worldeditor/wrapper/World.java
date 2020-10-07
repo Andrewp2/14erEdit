@@ -5,4 +5,9 @@ public class World {
 	// TODO
 	return 0;
     }
+
+    public Block getBlockAt(Location location) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 }

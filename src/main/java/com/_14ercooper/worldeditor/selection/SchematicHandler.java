@@ -8,6 +8,7 @@ import com._14ercooper.schematics.SchemLite;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class SchematicHandler {
     // Save a schematic to disk

@@ -7,16 +7,20 @@ import com._14ercooper.worldeditor.selection.SelectionCommand;
 import com._14ercooper.worldeditor.selection.SelectionWand;
 import com._14ercooper.worldeditor.selection.SelectionWandListener;
 import com._14ercooper.worldeditor.undo.UndoManager;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
+import com._14ercooper.worldeditor.wrapper.CommandExecutor;
+import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 // For the fx command
 public class CommandFx implements CommandExecutor {
 
     private static int argOffset = 0;
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, String label, String[] args) {
 	if (sender instanceof Player) {
 	    if (!((Player) sender).isOp()) {
-		sender.sendMessage("You must be opped to use 14erEdit");
+		Broadcaster.broadcastSingle("You must be opped to use 14erEdit.", sender);
 		return false;
 	    }
 	}
@@ -42,7 +46,7 @@ public class CommandFx implements CommandExecutor {
 		else if (args[argOffset].equalsIgnoreCase("brush") || args[argOffset].equalsIgnoreCase("br")) {
 		    // Unassign a brush if asked
 		    if (args[argOffset + 1].equalsIgnoreCase("none")) {
-			sender.sendMessage("§dBrush removed.");
+			Broadcaster.broadcastSingle("Brush removed.", sender);
 			return Brush.removeBrush((Player) sender);
 		    }
 		    // Create a new brush as requested

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com._14ercooper.worldeditor.main.Main;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class Make {
 

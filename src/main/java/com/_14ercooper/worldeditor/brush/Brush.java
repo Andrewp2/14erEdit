@@ -11,6 +11,7 @@ import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.brush.shapes.Multi;
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class Brush {
     // Together, these two parameters serve as the ID for the brush

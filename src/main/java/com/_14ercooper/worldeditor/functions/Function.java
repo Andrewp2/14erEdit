@@ -12,6 +12,7 @@ import java.util.Map;
 import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class Function {
 

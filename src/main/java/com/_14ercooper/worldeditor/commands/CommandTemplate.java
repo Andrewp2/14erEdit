@@ -6,14 +6,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com._14ercooper.worldeditor.main.Main;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
+import com._14ercooper.worldeditor.wrapper.CommandExecutor;
+import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class CommandTemplate implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
+    public boolean onCommand(CommandSender arg0, String arg2, String[] arg3) {
 	if (arg0 instanceof Player) {
 	    if (!((Player) arg0).isOp()) {
-		arg0.sendMessage("You must be opped to use 14erEdit");
+		Broadcaster.broadcastSingle("You must be opped to use 14erEdit.", arg0);
 		return false;
 	    }
 	}
@@ -67,7 +71,7 @@ public class CommandTemplate implements CommandExecutor {
 
 	// Run the command
 	try {
-	    return Bukkit.dispatchCommand(player, command);
+	    return player.dispatchCommand(command);
 	}
 	catch (Exception e) {
 	    Main.logError("Could not run command in template.", player);

@@ -6,9 +6,8 @@ import java.util.Map;
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.operators.core.EntryNode;
 import com._14ercooper.worldeditor.operations.type.*;
+import com._14ercooper.worldeditor.wrapper.Block;
 import com._14ercooper.worldeditor.wrapper.Player;
-
-import net.minecraft.block.Block;
 
 public class Operator {
     public static Operator currentOperator;

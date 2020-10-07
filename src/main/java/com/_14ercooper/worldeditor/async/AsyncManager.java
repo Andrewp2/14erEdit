@@ -15,6 +15,8 @@ import com._14ercooper.worldeditor.main.NBTExtractor;
 import com._14ercooper.worldeditor.main.SetBlock;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.undo.UndoManager;
+import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class AsyncManager {
 

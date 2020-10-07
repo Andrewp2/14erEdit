@@ -5,14 +5,20 @@ import com._14ercooper.worldeditor.brush.shapes.Voxel;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.BlockCommandSender;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
+import com._14ercooper.worldeditor.wrapper.CommandExecutor;
+import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Entity;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class CommandRunat implements CommandExecutor {
 
     @SuppressWarnings("static-access")
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, String label, String[] args) {
 	if (sender instanceof Player) {
 	    if (!((Player) sender).isOp()) {
-		sender.sendMessage("You must be opped to use 14erEdit");
+		Broadcaster.broadcastSingle("You must be opped to use 14erEdit.", sender);
 		return false;
 	    }
 	}

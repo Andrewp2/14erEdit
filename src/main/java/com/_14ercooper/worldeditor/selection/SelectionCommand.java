@@ -7,6 +7,7 @@ import java.util.List;
 import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.operations.Operator;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class SelectionCommand {
     public static boolean performCommand(String[] args, Player player) {

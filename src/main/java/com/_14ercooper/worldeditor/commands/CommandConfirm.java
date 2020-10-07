@@ -1,20 +1,24 @@
 package com._14ercooper.worldeditor.commands;
 
 import com._14ercooper.worldeditor.main.GlobalVars;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
+import com._14ercooper.worldeditor.wrapper.CommandExecutor;
+import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 // These are dedicated versions of the undo and redo commands
 public class CommandConfirm implements CommandExecutor {
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, String label, String[] args) {
 	if (sender instanceof Player) {
 	    if (!((Player) sender).isOp()) {
-		sender.sendMessage("You must be opped to use 14erEdit");
+		Broadcaster.broadcastSingle("You must be opped to use 14erEdit.", sender);
 		return false;
 	    }
 	}
 
 	if (sender instanceof Player) {
-	    if (command.getName().equalsIgnoreCase("confirm")) {
+	    if (label.equalsIgnoreCase("confirm")) {
 		if (args.length > 0 && args[0].equalsIgnoreCase("auto")) {
 		    GlobalVars.autoConfirm = !GlobalVars.autoConfirm;
 		    return true;
@@ -29,7 +33,7 @@ public class CommandConfirm implements CommandExecutor {
 		GlobalVars.asyncManager.confirmEdits(numToConfirm);
 		return true;
 	    }
-	    else if (command.getName().equalsIgnoreCase("cancel")) {
+	    else if (label.equalsIgnoreCase("cancel")) {
 		int numToCancel = 1;
 		try {
 		    numToCancel = Integer.parseInt(args[0]);

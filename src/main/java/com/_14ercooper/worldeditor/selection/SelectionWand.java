@@ -1,5 +1,7 @@
 package com._14ercooper.worldeditor.selection;
 
+import com._14ercooper.worldeditor.wrapper.Player;
+
 public class SelectionWand {
     public Player owner; // Store the owner so people can have different selections
     public SelectionManager manager; // Same reason as above

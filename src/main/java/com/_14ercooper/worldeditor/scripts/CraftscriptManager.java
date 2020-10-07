@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com._14ercooper.worldeditor.main.*;
 import com._14ercooper.worldeditor.undo.UndoManager;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class CraftscriptManager {
 
