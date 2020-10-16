@@ -4,6 +4,7 @@ import java.util.List;
 
 import com._14ercooper.worldeditor.functions.Function;
 import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
+import com._14ercooper.worldeditor.wrapper.Material;
 
 public class CompareSlotCommand extends InterpreterCommand {
 
@@ -17,8 +18,8 @@ public class CompareSlotCommand extends InterpreterCommand {
 	    slot = Integer.parseInt(args.get(0));
 	}
 
-	Material handItem = slot >= 0 ? function.player.getInventory().getItem(slot).getType()
-		: function.player.getInventory().getItemInMainHand().getType();
+	Material handItem = slot >= 0 ? function.player.getSlot(slot)
+		: function.player.getMainhand();
 	String[] elements = args.get(1).split(";");
 	boolean foundMatch = false;
 	for (String s : elements) {

@@ -3,6 +3,7 @@ package com._14ercooper.worldeditor.make.generators;
 import java.util.Map;
 
 import com._14ercooper.worldeditor.make.MakeGenerator;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class Item extends MakeGenerator {
 

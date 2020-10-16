@@ -13,6 +13,7 @@ import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
 import com._14ercooper.worldeditor.main.GlobalVars;
 import com._14ercooper.worldeditor.main.Main;
 import com._14ercooper.worldeditor.wrapper.Player;
+import com._14ercooper.worldeditor.wrapper.Scheduler;
 
 public class Function {
 
@@ -24,12 +25,12 @@ public class Function {
     public static void SetupFunctions() {
 	RegisterFunctions.RegisterAll();
 
-	Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(GlobalVars.plugin, new Runnable() {
+	Scheduler.registerNewAsync(new Runnable() {
 	    @Override
 	    public void run() {
 		Function.CheckWaitingFunctions();
 	    }
-	}, 1l, 1l);
+	}, 1, true);
     }
 
     // See if any waiting functions are ready to keep running
@@ -165,7 +166,7 @@ public class Function {
 
 		// Else (Minecraft command)
 		Main.logDebug("Running as normal command.");
-		boolean didRun = Bukkit.dispatchCommand(player, line);
+		boolean didRun = player.dispatchCommand(line);
 		if (!didRun) {
 		    Main.logError("Invalid command detected. Line " + currentLine, player);
 		}

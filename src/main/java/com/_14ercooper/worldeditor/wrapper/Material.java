@@ -6,4 +6,9 @@ public class Material {
 	// TODO
 	return null;
     }
+    
+    public boolean isMaterial(String id) {
+	// TODO
+	return false;
+    }
 }

@@ -54,4 +54,24 @@ public class Block {
 	// TODO
 	return 0;
     }
+
+    public String getType() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    public String getBlockData() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    public Block getRelative(int i, int j, int k) {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    public Location getLocation() {
+	// TODO Auto-generated method stub
+	return null;
+    }
 }

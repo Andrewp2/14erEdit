@@ -10,4 +10,9 @@ public class World {
 	// TODO Auto-generated method stub
 	return null;
     }
+
+    public Block getBlockAt(int x, int y, int z) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 }

@@ -4,4 +4,6 @@ public interface CommandSender extends BroadcastTarget {
 
     boolean dispatchCommand(String command);
 
+    void sendMessage(String string);
+
 }

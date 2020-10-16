@@ -5,6 +5,8 @@ import java.util.List;
 import com._14ercooper.worldeditor.functions.Function;
 import com._14ercooper.worldeditor.functions.commands.InterpreterCommand;
 import com._14ercooper.worldeditor.main.Main;
+import com._14ercooper.worldeditor.wrapper.Block;
+import com._14ercooper.worldeditor.wrapper.Material;
 
 public class BlockCommand extends InterpreterCommand {
 
@@ -23,7 +25,7 @@ public class BlockCommand extends InterpreterCommand {
 		    Main.logError("Material " + s + " not found.", function.player);
 		}
 		else {
-		    returnVal = returnVal || m == blk.getType();
+		    returnVal = returnVal || m.isMaterial(blk.getType());
 		}
 	    }
 	    else {

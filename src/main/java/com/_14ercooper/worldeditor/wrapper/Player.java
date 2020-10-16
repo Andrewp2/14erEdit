@@ -38,4 +38,35 @@ public class Player implements BroadcastTarget, CommandSender {
 	// TODO Auto-generated method stub
 	return null;
     }
+
+    @Override
+    public void sendMessage(String string) {
+	// TODO Auto-generated method stub
+	
+    }
+
+    public Material getSlot(int id) {
+	// TODO Auto-generated method stub
+	return null;
+    }
+    
+    public Material getMainhand() {
+	// TODO
+	return null;
+    }
+    
+    public Material getOffhand() {
+	// TODO
+	return null;
+    }
+
+    public void setSlot(int slot, Material toSet) {
+	// TODO Auto-generated method stub
+	
+    }
+
+    public void setHand(Material toSet) {
+	// TODO Auto-generated method stub
+	
+    }
 }

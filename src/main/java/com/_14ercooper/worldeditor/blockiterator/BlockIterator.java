@@ -2,6 +2,8 @@ package com._14ercooper.worldeditor.blockiterator;
 
 import java.util.List;
 
+import com._14ercooper.worldeditor.wrapper.Block;
+
 public abstract class BlockIterator {
     // Returns a new instance of the block iterator based on the passed arguments
     // First 3 are the origin of the iterator, the rest vary

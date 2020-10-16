@@ -8,6 +8,8 @@ import com._14ercooper.worldeditor.blockiterator.BlockIterator;
 import com._14ercooper.worldeditor.blockiterator.iterators.MultiIterator;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.undo.Undo;
+import com._14ercooper.worldeditor.wrapper.Block;
+import com._14ercooper.worldeditor.wrapper.Player;
 
 public class AsyncOperation {
     protected String key = "";

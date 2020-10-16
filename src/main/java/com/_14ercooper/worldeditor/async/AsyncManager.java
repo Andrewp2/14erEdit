@@ -15,8 +15,12 @@ import com._14ercooper.worldeditor.main.NBTExtractor;
 import com._14ercooper.worldeditor.main.SetBlock;
 import com._14ercooper.worldeditor.operations.Operator;
 import com._14ercooper.worldeditor.undo.UndoManager;
+import com._14ercooper.worldeditor.wrapper.Block;
+import com._14ercooper.worldeditor.wrapper.Broadcaster;
 import com._14ercooper.worldeditor.wrapper.CommandSender;
+import com._14ercooper.worldeditor.wrapper.Material;
 import com._14ercooper.worldeditor.wrapper.Player;
+import com._14ercooper.worldeditor.wrapper.Scheduler;
 
 public class AsyncManager {
 
@@ -34,13 +38,12 @@ public class AsyncManager {
 
     // On initialization start the scheduler
     public AsyncManager() {
-	BukkitScheduler scheduler = Bukkit.getServer().getScheduler();
-	scheduler.scheduleSyncRepeatingTask(GlobalVars.plugin, new Runnable() {
+	Scheduler.registerNewAsync(new Runnable() {
 	    @Override
 	    public void run() {
 		GlobalVars.asyncManager.performOperation();
 	    }
-	}, GlobalVars.ticksPerAsync, GlobalVars.ticksPerAsync);
+	}, (int) GlobalVars.ticksPerAsync, true);
     }
 
     // Drops the async queue
@@ -340,7 +343,7 @@ public class AsyncManager {
 			continue;
 		    }
 		    String material = b.getType().toString();
-		    String data = b.getBlockData().getAsString();
+		    String data = b.getBlockData();
 		    NBTExtractor nbtE = new NBTExtractor();
 		    String nbt = nbtE.getNBT(b);
 		    try {
@@ -387,13 +390,11 @@ public class AsyncManager {
 		    catch (IOException e) {
 			// Don't need to do anything
 		    }
-		    if (!Material.matchMaterial(results[0]).isAir() || currentAsyncOp.schem.setAir()) {
+		    if (!Material.matchMaterial(results[0]).isMaterial("air") || currentAsyncOp.schem.setAir()) {
 			SetBlock.setMaterial(b, Material.matchMaterial(results[0]), false);
-			b.setBlockData(Bukkit.getServer().createBlockData(results[1]));
+			b.setData(results[1]);
 			if (!results[2].isEmpty()) {
-			    String command = "data merge block " + b.getX() + " " + b.getY() + " " + b.getZ() + " "
-				    + results[2];
-			    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+			    b.setNBT(results[2]);
 			}
 		    }
 		    doneOperations++;
@@ -426,19 +427,16 @@ public class AsyncManager {
 		    for (int timesDone = 0; timesDone < currentAsyncOp.times; timesDone++) {
 			Block toEdit = b.getRelative(currentAsyncOp.offset[0] * (1 + timesDone),
 				currentAsyncOp.offset[1] * (1 + timesDone), currentAsyncOp.offset[2] * (1 + timesDone));
-			SetBlock.setMaterial(toEdit, b.getType(), false);
-			toEdit.setBlockData(b.getBlockData(), false);
+			SetBlock.setMaterial(toEdit, Material.matchMaterial(b.getType()), false);
+			toEdit.setData(b.getBlockData(), false);
 			NBTExtractor nbt = new NBTExtractor();
 			String nbtStr = nbt.getNBT(b);
 			if (nbtStr.length() > 2) {
-			    String command = "data merge block " + toEdit.getX() + " " + toEdit.getY() + " "
-				    + toEdit.getZ() + " " + nbtStr;
-			    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
-			    doneOperations++;
+			    b.setNBT(nbtStr);
 			}
 		    }
 		    if (currentAsyncOp.delOriginal) {
-			SetBlock.setMaterial(b, Material.AIR, false);
+			SetBlock.setMaterial(b, Material.matchMaterial("air"), false);
 			doneOperations++;
 		    }
 		    doneOperations += currentAsyncOp.times;
@@ -446,7 +444,7 @@ public class AsyncManager {
 		}
 
 		else {
-		    Main.logError("Invalid operation in async queue. Removing operation.", Bukkit.getConsoleSender());
+		    Main.logError("Invalid operation in async queue. Removing operation.", Broadcaster.getConsole());
 		    operations.remove(i);
 		    i--;
 		    opSize--;
