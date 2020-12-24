@@ -46,6 +46,9 @@ public class Main extends Initializer {
 	catch (IOException e) {
 	    Main.logDebug("Error creating directory structure. 14erEdit may not work properly until this is resolved.");
 	}
+	
+	// Load values from config into global vars
+	// TODO
 
 	// Register commands with the server
 	CommandManager.addCommand("fx", new CommandFx());
